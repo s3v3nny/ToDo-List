@@ -75,7 +75,7 @@ public class Actions {
         }
     }
 
-    public void changeStatus (File taskFile, Scanner input) throws Exception {
+    public void changeStatus(File taskFile, Scanner input) throws Exception {
         String taskString;
         ArrayList<Tasks> tasksList = new ArrayList<>();
         FileReader fr = new FileReader(taskFile);
@@ -100,7 +100,7 @@ public class Actions {
         System.out.print("Введите номер задачи для изменения статуса на 'Выполнено': ");
         choice = input.nextInt();
         input.nextLine();
-        tasksList.get(choice-1).complete = true;
+        tasksList.get(choice - 1).complete = true;
 
         FileWriter writer = new FileWriter(taskFile, false);
 

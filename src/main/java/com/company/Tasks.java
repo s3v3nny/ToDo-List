@@ -4,7 +4,7 @@ public class Tasks {
     String name;
     boolean complete;
 
-    public Tasks(String name, boolean complete){
+    public Tasks(String name, boolean complete) {
         this.name = name;
         this.complete = complete;
     }
