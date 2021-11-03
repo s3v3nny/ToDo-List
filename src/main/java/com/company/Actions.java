@@ -16,7 +16,7 @@ public class Actions {
 
     public void removeTask(Path tasksPath, Scanner input) throws Exception {
         ArrayList<Tasks> tasksList = new ArrayList<>();
-        Converter converter = new Converter();
+        Converter converter = new StringConverter();
 
         String taskString = Files.readString(tasksPath);
         tasksList = converter.fromString(taskString);
@@ -41,7 +41,7 @@ public class Actions {
 
     public void showTasks(Path tasksPath) throws Exception {
         ArrayList<Tasks> tasksList = new ArrayList<>();
-        Converter converter = new Converter();
+        Converter converter = new StringConverter();
 
         String taskString = Files.readString(tasksPath);
         tasksList = converter.fromString(taskString);
@@ -56,7 +56,7 @@ public class Actions {
 
     public void changeStatus(Path tasksPath, Scanner input) throws Exception {
         ArrayList<Tasks> tasksList = new ArrayList<>();
-        Converter converter = new Converter();
+        Converter converter = new StringConverter();
 
         String taskString = Files.readString(tasksPath);
         tasksList = converter.fromString(taskString);
