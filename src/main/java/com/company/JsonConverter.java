@@ -13,7 +13,7 @@ public class JsonConverter implements Converter {
         Gson gson = new GsonBuilder().create();
         ArrayList<Tasks> tasksList = new ArrayList<>();
 
-        if ("{}".equals(FileString) || "".equals(FileString)) return tasksList;
+        if ("[]".equals(FileString) || "".equals(FileString)) return tasksList;
 
         TypeToken<List<Tasks>> token = new TypeToken<List<Tasks>>() {
         };
