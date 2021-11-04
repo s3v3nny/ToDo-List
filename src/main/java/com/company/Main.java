@@ -17,20 +17,18 @@ public class Main {
 
         System.out.print("Привет! Это программа для создания To-Do листа. Введи название файла, где будут храниться/уже сохранены задачи(Ты можешь использовать .txt или .json, просто допиши нужное расширение): ");
         String fileName = input.nextLine();
-        do{
-           if (fileName.split("\\.")[1].equals("json")) {
-               rightType = true;
-               actions.converter = new JsonConverter();
-           }
-           else if(fileName.split(".")[1].equals("txt")) {
-               rightType = true;
-               actions.converter = new StringConverter();
-           }
-           else {
-               System.out.print("Проверьте правильность ввода расширения: ");
-               fileName = input.nextLine();
-           }
-        }while(!rightType);
+        do {
+            if (fileName.split("\\.")[1].equals("json")) {
+                rightType = true;
+                actions.converter = new JsonConverter();
+            } else if (fileName.split(".")[1].equals("txt")) {
+                rightType = true;
+                actions.converter = new StringConverter();
+            } else {
+                System.out.print("Проверьте правильность ввода расширения: ");
+                fileName = input.nextLine();
+            }
+        } while (!rightType);
         Path tasksPath = Path.of(fileName);
         File taskFile = new File(fileName);
         if (taskFile.createNewFile())
@@ -61,20 +59,18 @@ public class Main {
                 case 4:
                     System.out.print("Введите имя файла: ");
                     fileName = input.nextLine();
-                    do{
+                    do {
                         if (fileName.split(".")[1].equals("json")) {
                             rightType = true;
                             actions.converter = new JsonConverter();
-                        }
-                        else if(fileName.split(".")[1].equals("txt")) {
+                        } else if (fileName.split(".")[1].equals("txt")) {
                             rightType = true;
                             actions.converter = new StringConverter();
-                        }
-                        else {
+                        } else {
                             System.out.print("Проверьте правильность ввода расширения: ");
                             fileName = input.nextLine();
                         }
-                    }while(!rightType);
+                    } while (!rightType);
                     taskFile = new File(fileName + ".txt");
                     tasksPath = Path.of(fileName + ".txt");
                     if (taskFile.createNewFile())
