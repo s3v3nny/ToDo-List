@@ -1,8 +1,11 @@
 package com.company;
 
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 
 public class StringConverter implements Converter {
+
     public ArrayList<Tasks> fromString(String FileString) {
         ArrayList<Tasks> tasksList = new ArrayList<>();
 
@@ -16,5 +19,13 @@ public class StringConverter implements Converter {
         }
 
         return tasksList;
+    }
+
+    public String asString(ArrayList<Tasks> tasksList) {
+        String outputString = "";
+        for (Tasks s : tasksList) {
+            outputString += s.name + (s.complete ? ", Выполнено\n" : ", Не выполнено\n");
+        }
+        return outputString;
     }
 }

@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class Actions {
 
+    Converter converter;
+
     public void addTask(Path tasksPath, Scanner input) throws Exception {
         System.out.print("Введите задачу: ");
         String task = input.nextLine() + ", Не выполнено\n";
@@ -16,10 +18,9 @@ public class Actions {
 
     public void removeTask(Path tasksPath, Scanner input) throws Exception {
         ArrayList<Tasks> tasksList = new ArrayList<>();
-        Converter converter = new StringConverter();
 
         String taskString = Files.readString(tasksPath);
-        tasksList = converter.fromString(taskString);
+        tasksList = this.converter.fromString(taskString);
 
         int i = 0;
         int choice;
@@ -41,10 +42,9 @@ public class Actions {
 
     public void showTasks(Path tasksPath) throws Exception {
         ArrayList<Tasks> tasksList = new ArrayList<>();
-        Converter converter = new StringConverter();
 
         String taskString = Files.readString(tasksPath);
-        tasksList = converter.fromString(taskString);
+        tasksList = this.converter.fromString(taskString);
 
         for (Tasks s : tasksList) {
             String outputString;
@@ -56,10 +56,9 @@ public class Actions {
 
     public void changeStatus(Path tasksPath, Scanner input) throws Exception {
         ArrayList<Tasks> tasksList = new ArrayList<>();
-        Converter converter = new StringConverter();
 
         String taskString = Files.readString(tasksPath);
-        tasksList = converter.fromString(taskString);
+        tasksList = this.converter.fromString(taskString);
 
         int i = 0;
         int choice;
