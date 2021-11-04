@@ -18,7 +18,7 @@ public class Main {
         System.out.print("Привет! Это программа для создания To-Do листа. Введи название файла, где будут храниться/уже сохранены задачи(Ты можешь использовать .txt или .json, просто допиши нужное расширение): ");
         String fileName = input.nextLine();
         do{
-           if (fileName.split(".")[1].equals("json")) {
+           if (fileName.split("\\.")[1].equals("json")) {
                rightType = true;
                actions.converter = new JsonConverter();
            }

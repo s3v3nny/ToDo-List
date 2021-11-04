@@ -11,9 +11,17 @@ public class Actions {
     Converter converter;
 
     public void addTask(Path tasksPath, Scanner input) throws Exception {
+        ArrayList<Tasks> tasksList = new ArrayList<>();
+
         System.out.print("Введите задачу: ");
-        String task = input.nextLine() + ", Не выполнено\n";
-        Files.writeString(tasksPath, task, StandardOpenOption.APPEND);
+        String task = input.nextLine();
+
+        String taskString = Files.readString(tasksPath);
+        tasksList = this.converter.fromString(taskString);
+        tasksList.add(new Tasks(task, false));
+
+        Files.writeString(tasksPath, "");
+        Files.writeString(tasksPath, converter.asString(tasksList));
     }
 
     public void removeTask(Path tasksPath, Scanner input) throws Exception {
@@ -31,13 +39,8 @@ public class Actions {
         tasksList.remove(choice - 1);
 
         Files.writeString(tasksPath, "");
+        Files.writeString(tasksPath, converter.asString(tasksList), StandardOpenOption.APPEND);
 
-        for (Tasks s : tasksList) {
-            String outputString;
-            if (s.complete) outputString = s.name + ", " + "Выполнено\n";
-            else outputString = s.name + ", " + "Не выполнено\n";
-            Files.writeString(tasksPath, outputString, StandardOpenOption.APPEND);
-        }
     }
 
     public void showTasks(Path tasksPath) throws Exception {
@@ -74,12 +77,7 @@ public class Actions {
         tasksList.get(choice - 1).complete = true;
 
         Files.writeString(tasksPath, "");
+        Files.writeString(tasksPath, converter.asString(tasksList));
 
-        for (Tasks s : tasksList) {
-            String outputString;
-            if (s.complete) outputString = s.name + ", " + "Выполнено\n";
-            else outputString = s.name + ", " + "Не выполнено\n";
-            Files.writeString(tasksPath, outputString, StandardOpenOption.APPEND);
-        }
     }
 }
